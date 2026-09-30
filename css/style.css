@@ -370,3 +370,81 @@ html.lightbox-aktiv { overflow: hidden; }
   .lightbox.offen { animation: none; }
   .lightbox-hinweis { transition: none; }
 }
+
+/* ==========================================================
+   Sprechblasen für Begriffe (js/erklaerungen.js)
+   ========================================================== */
+.begriff {
+  cursor: help;
+  border-radius: 3px;
+  text-decoration: underline dotted var(--rot);
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.begriff:hover,
+.begriff[aria-expanded="true"] { background: var(--rosa); }
+
+.begriff .info,
+.notiz .info { display: none; }
+
+/* Sprechblasen-Symbol */
+.notiz {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.05em;
+  margin-left: 0.1em;
+  vertical-align: -0.12em;
+  color: #9aa5ae;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+.notiz-symbol {
+  display: block;
+  width: 100%;
+  height: 100%;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.notiz:hover,
+.notiz[aria-expanded="true"] { color: var(--rot); }
+
+.sprechblase {
+  position: absolute;
+  z-index: 30;
+  max-width: min(21rem, calc(100vw - 16px));
+  padding: 0.7rem 0.9rem;
+  background: #fff;
+  border: 1px solid var(--linie);
+  border-radius: 8px;
+  box-shadow: 0 6px 24px rgba(28, 34, 38, 0.12), 0 1px 3px rgba(28, 34, 38, 0.08);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--tinte);
+}
+
+.sprechblase[hidden] { display: none; }
+
+.sprechblase-pfeil {
+  position: absolute;
+  top: -6px;
+  width: 10px;
+  height: 10px;
+  margin-left: -5px;
+  background: #fff;
+  border-left: 1px solid var(--linie);
+  border-top: 1px solid var(--linie);
+  transform: rotate(45deg);
+}
+
+.sprechblase.oben .sprechblase-pfeil {
+  top: auto;
+  bottom: -6px;
+  border: 0;
+  border-right: 1px solid var(--linie);
+  border-bottom: 1px solid var(--linie);
+}
