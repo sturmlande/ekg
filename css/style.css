@@ -1,0 +1,371 @@
+/* ==========================================================
+   Farben und Maße – hier zentral anpassen
+   ========================================================== */
+:root {
+  --papier: #ffffff;
+  --tinte: #1c2226;
+  --grau: #5b656d;
+  --linie: #e4e7ea;
+  --rot: #c0343a;        /* das Rot vom EKG-Papier */
+  --rosa: #fbecec;
+  --leiste-breite: 15rem;
+  --kopf-hoehe: 4rem;
+  font-size: 106.25%;    /* 17 px Grundschrift */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--papier);
+  color: var(--tinte);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+}
+
+a { color: var(--rot); }
+
+:focus-visible {
+  outline: 2px solid var(--rot);
+  outline-offset: 2px;
+}
+
+/* ==========================================================
+   Kopfzeile mit EKG-Linie
+   ========================================================== */
+.kopf {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  height: var(--kopf-hoehe);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.25rem 16px;
+  background: var(--papier);
+}
+
+.kopf::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 16px;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='16'%3E%3Cpath d='M0 11H70l4-2 4 2h12l3 3 5-13 5 14 3-4h8q6-5 12 0h74' fill='none' stroke='%23c0343a' stroke-width='1.25' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x left center / 200px 16px;
+}
+
+.seitentitel {
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--tinte);
+  text-decoration: none;
+}
+
+.menu-knopf {
+  display: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  background: var(--papier);
+  color: var(--tinte);
+  cursor: pointer;
+}
+
+/* ==========================================================
+   Grundaufbau: Seitenleiste links, Inhalt rechts
+   ========================================================== */
+.rahmen {
+  display: grid;
+  grid-template-columns: var(--leiste-breite) minmax(0, 1fr);
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.seitenleiste {
+  position: sticky;
+  top: var(--kopf-hoehe);
+  align-self: start;
+  height: calc(100vh - var(--kopf-hoehe));
+  overflow-y: auto;
+  padding: 1.5rem 1rem;
+  border-right: 1px solid var(--linie);
+  background: var(--papier);
+}
+
+.seitenleiste ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Einleitung und Abschluss rahmen die Fälle ein */
+.seitenleiste li:first-child {
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.6rem;
+  border-bottom: 1px solid var(--linie);
+}
+
+.seitenleiste li:last-child {
+  padding-top: 0.6rem;
+  margin-top: 0.6rem;
+  border-top: 1px solid var(--linie);
+}
+
+.seitenleiste a {
+  display: block;
+  padding: 0.4rem 0.75rem;
+  border-left: 3px solid transparent;
+  border-radius: 0 6px 6px 0;
+  color: var(--grau);
+  text-decoration: none;
+}
+
+.seitenleiste a:hover {
+  color: var(--tinte);
+  background: #f4f5f6;
+}
+
+.seitenleiste a[aria-current="page"] {
+  color: var(--tinte);
+  font-weight: 600;
+  background: var(--rosa);
+  border-left-color: var(--rot);
+}
+
+/* ==========================================================
+   Inhalt
+   ========================================================== */
+.inhalt {
+  width: 100%;
+  max-width: 46rem;
+  padding: 2.5rem 2.5rem 4rem;
+}
+
+.inhalt h1 {
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  margin: 0 0 1.25rem;
+}
+
+.inhalt h2 {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  margin: 2.25rem 0 0.75rem;
+}
+
+.inhalt p,
+.inhalt ul,
+.inhalt ol {
+  margin: 0 0 1rem;
+}
+
+.inhalt li + li { margin-top: 0.25rem; }
+
+/* EKG-Bilder */
+.inhalt figure {
+  margin: 1.75rem 0 2rem;
+}
+
+.inhalt img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+img.ekg {
+  width: 100%;
+  border: 1px solid var(--linie);
+  border-radius: 4px;
+  cursor: zoom-in;
+}
+
+.inhalt figcaption {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
+  color: var(--grau);
+}
+
+/* Vor- und Zurückblättern */
+.blaettern {
+  display: flex;
+  gap: 1rem;
+  margin-top: 3.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--linie);
+}
+
+.blaettern a {
+  flex: 0 1 15rem;
+  min-width: 0;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--linie);
+  border-radius: 6px;
+  color: var(--tinte);
+  text-decoration: none;
+}
+
+.blaettern a:hover { border-color: var(--rot); }
+
+.blaettern .weiter {
+  margin-left: auto;
+  text-align: right;
+}
+
+.blaettern .hinweis {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--grau);
+}
+
+.blaettern .titel {
+  font-weight: 600;
+  color: var(--rot);
+}
+
+/* ==========================================================
+   Handy und schmale Tablets
+   ========================================================== */
+.schleier { display: none; }
+
+@media (max-width: 800px) {
+  .menu-knopf { display: inline-flex; }
+
+  .rahmen { display: block; }
+
+  .seitenleiste {
+    position: fixed;
+    top: var(--kopf-hoehe);
+    left: 0;
+    bottom: 0;
+    z-index: 15;
+    width: min(80vw, 18rem);
+    height: auto;
+    align-self: stretch;   /* sonst endet die Leiste nach dem letzten Eintrag */
+    transform: translateX(-100%);
+    transition: transform 0.2s ease;
+  }
+
+  body.menue-offen .seitenleiste { transform: none; }
+
+  .schleier {
+    display: block;
+    position: fixed;
+    inset: var(--kopf-hoehe) 0 0 0;
+    z-index: 14;
+    background: rgba(28, 34, 38, 0.35);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+
+  body.menue-offen .schleier {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .inhalt { padding: 1.75rem 1.25rem 3rem; }
+
+  .inhalt h1 { font-size: 1.65rem; }
+}
+
+/* ==========================================================
+   Vollbildansicht für EKG-Bilder
+   ========================================================== */
+html.lightbox-aktiv { overflow: hidden; }
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: none;
+  background: rgba(22, 25, 28, 0.94);
+}
+
+.lightbox.offen {
+  display: block;
+  animation: einblenden 0.15s ease-out;
+}
+
+@keyframes einblenden {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-buehne {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  touch-action: none;
+  cursor: zoom-in;
+}
+
+.lightbox-buehne.gezoomt { cursor: grab; }
+.lightbox-buehne.gezoomt.zieht { cursor: grabbing; }
+
+.lightbox-buehne img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: none;
+  background: #fff;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-user-drag: none;
+}
+
+.lightbox-leiste {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 2;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.lightbox-leiste button {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  background: rgba(22, 25, 28, 0.8);
+  color: #fff;
+  font: inherit;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.lightbox-leiste button:hover { background: rgba(60, 66, 72, 0.9); }
+
+.lightbox-hinweis {
+  position: absolute;
+  left: 1rem;
+  right: 1rem;
+  bottom: 0.75rem;
+  margin: 0;
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+/* Hinweis ausblenden, sobald gezoomt wird */
+.lightbox-buehne.gezoomt ~ .lightbox-hinweis { opacity: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .seitenleiste,
+  .schleier { transition: none; }
+  .lightbox.offen { animation: none; }
+  .lightbox-hinweis { transition: none; }
+}
