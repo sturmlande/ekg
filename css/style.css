@@ -9,7 +9,7 @@
   --rot: #c0343a;        /* das Rot vom EKG-Papier */
   --rosa: #fbecec;
   --leiste-breite: 15rem;
-  --kopf-hoehe: 4rem;
+  --kopf-hoehe: 5rem;
   font-size: 106.25%;    /* 17 px Grundschrift */
 }
 
@@ -43,7 +43,7 @@ a { color: var(--rot); }
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0 1.25rem 16px;
+  padding: 0 1.25rem 40px;
   background: var(--papier);
 }
 
@@ -53,8 +53,9 @@ a { color: var(--rot); }
   left: 0;
   right: 0;
   bottom: 0;
-  height: 16px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='16'%3E%3Cpath d='M0 11H70l4-2 4 2h12l3 3 5-13 5 14 3-4h8q6-5 12 0h74' fill='none' stroke='%23c0343a' stroke-width='1.25' stroke-linejoin='round'/%3E%3C/svg%3E") repeat-x left center / 200px 16px;
+  height: 40px;
+  /* Vorhofflimmern bei WPW, Ableitung I, nachgezeichnet in Originalproportionen */
+  background: url("../bilder/kopf-ekg.svg") repeat-x left center / 430px 40px;
 }
 
 .seitentitel {
