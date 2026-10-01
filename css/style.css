@@ -86,7 +86,7 @@ a { color: var(--rot); }
 .rahmen {
   display: grid;
   grid-template-columns: var(--leiste-breite) minmax(0, 1fr);
-  max-width: 72rem;
+  max-width: 82rem;
   margin: 0 auto;
 }
 
@@ -146,7 +146,8 @@ a { color: var(--rot); }
    ========================================================== */
 .inhalt {
   width: 100%;
-  max-width: 46rem;
+  max-width: 56rem;          /* Breite der Textfläche – größer = mehr Wörter pro Zeile */
+  justify-self: center;      /* mittig in der rechten Spalte */
   padding: 2.5rem 2.5rem 4rem;
 }
 
@@ -236,6 +237,8 @@ img.ekg {
    Handy und schmale Tablets
    ========================================================== */
 .schleier { display: none; }
+
+.leiste-titel { display: none; }
 
 @media (max-width: 800px) {
   .menu-knopf { display: inline-flex; }
@@ -447,4 +450,53 @@ html.lightbox-aktiv { overflow: hidden; }
   border: 0;
   border-right: 1px solid var(--linie);
   border-bottom: 1px solid var(--linie);
+}
+
+/* ==========================================================
+   Variante OHNE Kopfzeile
+   Um die Kopfzeile mit Titel und EKG-Streifen zurückzuholen,
+   einfach diesen ganzen Block bis zum Dateiende löschen.
+   ========================================================== */
+:root { --kopf-hoehe: 0px; }
+
+.kopf { display: none; }
+
+.seitenleiste a.leiste-titel {
+  display: block;
+  margin: 0 0 1.25rem;
+  padding: 0 0.75rem;
+  border: 0;
+  font-size: 1.1rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--tinte);
+  background: none;
+}
+
+.seitenleiste { padding-top: 2.5rem; }
+
+@media (max-width: 800px) {
+  /* Auf dem Handy bleibt nur der Menüknopf, schwebend oben links */
+  .kopf {
+    display: block;
+    position: fixed;
+    top: 0.75rem;
+    left: 0.75rem;
+    height: auto;
+    padding: 0;
+    background: none;
+    z-index: 20;
+  }
+
+  .kopf::after,
+  .kopf .seitentitel { display: none; }
+
+  .menu-knopf {
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: 0 2px 8px rgba(28, 34, 38, 0.12);
+  }
+
+  .seitenleiste { padding-top: 4.25rem; }
+
+  .inhalt { padding-top: 4.5rem; }
 }

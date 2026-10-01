@@ -26,6 +26,14 @@ const SEITEN = [
   // Seitenleiste füllen
   const leiste = document.getElementById("seitenleiste");
   if (leiste) {
+    // Titel oben in der Seitenleiste (wird gezeigt, wenn die Kopfzeile ausgeblendet ist)
+    const titel = document.createElement("a");
+    titel.className = "leiste-titel";
+    titel.href = "index.html";
+    const kopfTitel = document.querySelector(".seitentitel");
+    titel.textContent = kopfTitel ? kopfTitel.textContent : "EKG-Vortrag";
+    leiste.appendChild(titel);
+
     const liste = document.createElement("ul");
     SEITEN.forEach((seite, i) => {
       const eintrag = document.createElement("li");
