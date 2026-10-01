@@ -462,7 +462,7 @@ html.lightbox-aktiv { overflow: hidden; }
 .kopf { display: none; }
 
 .seitenleiste a.leiste-titel {
-  display: block;
+  display: none;
   margin: 0 0 1.25rem;
   padding: 0 0.75rem;
   border: 0;
