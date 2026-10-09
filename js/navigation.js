@@ -4,15 +4,15 @@
 // auf allen Seiten automatisch an.
 // ============================================================
 const SEITEN = [
-  { datei: "index.html",     titel: "Einleitung" },
-  { datei: "fall-1.html",    titel: "Fall 1" },
-  { datei: "fall-2.html",    titel: "Fall 2" },
-  { datei: "fall-3.html",    titel: "Fall 3" },
-  { datei: "fall-4a.html",   titel: "Fall 4a" },
-  { datei: "fall-4b.html",   titel: "Fall 4b" },
-  { datei: "fall-5.html",    titel: "Fall 5" },
-  { datei: "fall-6.html",    titel: "Fall 6" },
-  { datei: "fall-7.html",    titel: "Fall 7" },
+  { datei: "index.html", titel: "Einleitung" },
+  { datei: "fall-1.html", titel: "Fall 1" },
+  { datei: "fall-2.html", titel: "Fall 2" },
+  { datei: "fall-3.html", titel: "Fall 3" },
+  { datei: "fall-4a.html", titel: "Fall 4a" },
+  { datei: "fall-4b.html", titel: "Fall 4b" },
+  { datei: "fall-5.html", titel: "Fall 5" },
+  { datei: "fall-6.html", titel: "Fall 6" },
+  { datei: "fall-7.html", titel: "Fall 7" },
   { datei: "abschluss.html", titel: "Abschluss" },
 ];
 
@@ -52,8 +52,8 @@ const SEITEN = [
   if (blaettern && index !== -1) {
     const vorher = SEITEN[index - 1];
     const nachher = SEITEN[index + 1];
-    if (vorher) blaettern.appendChild(blaetterLink(vorher, "Vorheriges Thema", "zurueck"));
-    if (nachher) blaettern.appendChild(blaetterLink(nachher, "Nächstes Thema", "weiter"));
+    if (vorher) blaettern.appendChild(blaetterLink(vorher, "Vorheriges Kapitel", "zurueck"));
+    if (nachher) blaettern.appendChild(blaetterLink(nachher, "Nächstes Kapitel", "weiter"));
   }
 
   function blaetterLink(seite, hinweis, klasse) {
