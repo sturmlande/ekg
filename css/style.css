@@ -86,7 +86,7 @@ a { color: var(--rot); }
 .rahmen {
   display: grid;
   grid-template-columns: var(--leiste-breite) minmax(0, 1fr);
-  max-width: 82rem;
+  max-width: 88rem;
   margin: 0 auto;
 }
 
@@ -146,7 +146,7 @@ a { color: var(--rot); }
    ========================================================== */
 .inhalt {
   width: 100%;
-  max-width: 56rem;          /* Breite der Textfläche – größer = mehr Wörter pro Zeile */
+  max-width: 62rem;          /* Breite der Textfläche – größer = mehr Wörter pro Zeile */
   justify-self: center;      /* mittig in der rechten Spalte */
   padding: 2.5rem 2.5rem 4rem;
 }
